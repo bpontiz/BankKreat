@@ -53,14 +53,13 @@ for(const interes of databases){
   interes.interesCompuesto();
 }
 
-
 //* Búsqueda del usuario segun las credenciales introducidas 
 //* por él mismo. 
 function isInDataBase(testDatabase, askProfession) {
   console.log("------------------"+"\n"+"[Testing] Validación de profesión."+"\n");
   testDatabase.some(function(CompProfession){
-    // CompProfession se instancia con ServicioInteres, que es un objeto. //
-    economistValidation = askProfession === CompProfession.profesion;
+    // CompProfession se instancia con ServicioInteres. //
+    let economistValidation = askProfession === CompProfession.profesion;
     console.log(economistValidation);
   });
 }
