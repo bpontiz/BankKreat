@@ -22,20 +22,30 @@ class ServicioInteres {
     * Descripción: función que calcula el interés compuesto a partir
     * de capital inicial sin reinversión parcial.
     */
-  let capitalInicial, capitalFinal, tasaDeInteres, tiempoDeAhorro;
+  let capitalInicial, capitalFinal, tasaDeInteres, tiempoDeAhorro, capitalReinversion;
   alert("A continuación ingreserá los datos de la calculadora.");
   capitalInicial = parseInt(prompt("Ingrese capital inicial. Ej: 3000"));
   tasaDeInteres = parseInt(prompt("Ingrese tasa de interés. Ej: 37%"));
   tiempoDeAhorro = parseInt(prompt("Ingrese tiempo de ahorro en meses. Ej: 2"));
+  capitalReinversion = parseInt(prompt("Ingrese monto de reinversión mensual. Ej: 3000"))
   alert("Chequea la consola!");
+  capitalFinal = 0;
   console.log("El capital inicial fue de: " + capitalInicial + " $");
+  console.log("El monto de reinversión fue de: " + capitalReinversion + " $");
   for( let i = 1; i <= tiempoDeAhorro; i++ ){
       //! Formula de interes compuesto
-      capitalFinal = capitalInicial * ( 1 + ((tasaDeInteres/100)/12) ) ** i;
-      let resultadoInteres = capitalFinal.toFixed(2);
-      console.log("El capital final al mes " + i + " es: " + resultadoInteres + " $");  
+      let resultadoInteres;
+      if( i == 1 ){
+        capitalFinal = (capitalInicial) * ( 1 + ( (tasaDeInteres/100) /12 ) ) ** i;
+        resultadoInteres = capitalFinal.toFixed(2);
+        console.log("El capital final al mes " + i + " es: " + resultadoInteres + " $");
+      }else{
+        capitalFinal = (capitalInicial + capitalReinversion * ( i-1 )) * ( 1 + ( (tasaDeInteres/100) /12 ) )**i;
+        resultadoInteres = capitalFinal.toFixed(2);
+        console.log("El capital final al mes " + i + " es: " + resultadoInteres + " $");
+      }
   }
-  let diferenciaCapital = capitalFinal - capitalInicial;
+  let diferenciaCapital = capitalFinal - (capitalInicial + ( capitalReinversion * ( tiempoDeAhorro - 1 )));
   let resultadoCapital = diferenciaCapital.toFixed(2);
   console.log("La ganancia total luego del tiempo de ahorro es de: " + resultadoCapital + " $");
   }
