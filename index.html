@@ -5,40 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="multimedia/favicon.ico" type="image/x-icon">
+    <!-- link bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- link css -->
     <link rel="stylesheet" href="style.css">
+    <!-- google fonts 1 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap" rel="stylesheet">
     <title>BANK KREAT</title>
 </head>
 <body>
-    <header>
+    <header class="container-fluid headerStyle">
         <h1 class="titleBankKreat">BANK KREAT</h1>
-        <h3 class="titleQuote">we make people accomplish their savings</h3>
     </header>
-    <main>
-        <div class="user">
-            <h3>Usuario: xx xx xxxx</h3>
+    <main class="container-fluid mainHeight">
+        <div class="row">
+            <div class="col-lg-12 displayInLine">
+                <h3 class="userText">Usuario</h3>
+                <h3><input class="inputUser" type="text"></h3>
+            </div>
         </div>
         <section class="interesValues">
-            <div class="card">
-                <h3>Capital Inicial</h3>
-                <h3 class="mount">xxxx $</h3>
-            </div>
-            <div class="card">
-                <h3>Interes</h3>
-                <h3 class="mount">37%</h3>    
-            </div>
-            <div class="card">
-                <h3>Plazo</h3>
-                <h3 class="mount">12</h3>
-            </div>
+            <div class="row">
+                <div class="col-lg-4 text-center tarjeta">
+                    <h3 class="concept">C.I.</h3>
+                    <h3 class="mount"><input class="inputMount" type="text" placeholder="Ej.: 5000">$</h3>
+                </div>
+                <div class="col-lg-4 text-center tarjeta">
+                    <h3 class="concept">Interes</h3>
+                    <h3 class="mount"><input class="inputMount" type="text" placeholder="Ej.: 37">%</h3>    
+                </div>
+                <div class="col-lg-4 text-center tarjeta">
+                    <h3 class="concept">Plazo</h3>
+                    <h3 class="mount"><input class="inputMount" type="text" placeholder="Ej.: 12">M</h3>
+                </div>
+            </div>  
         </section>
-        <div class="finalMount">
-            <h3>Capital Final</h3>
-            <h3 class="finalMount">xxxx $</h3>
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="finalCapitalText">C.F.</h3>
+                <h3><input class="inputFinalMount" type="text">$</h3>
+            </div>
         </div>
     </main>
-    <footer>
-        <h3 class="footerSign">Developed by Bruno Pontiz</h3>
+    <footer class="container-fluid">
+        <div class="row">
+            <h5 class="footerSign">Developed by Bruno Pontiz</h5>
+        </div>
     </footer>
     <script src="index.js"></script>
-</body>
 </html>
