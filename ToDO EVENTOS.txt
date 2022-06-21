@@ -1,0 +1,15 @@
+capitalInicial = parseInt(prompt("Ingrese capital inicial. Ej: 3000"));
+tasaDeInteres = parseInt(prompt("Ingrese tasa de interés. Ej: 37%"));
+tiempoDeAhorro = parseInt(prompt("Ingrese tiempo de ahorro en meses. Ej: 2"));
+capitalReinversion = parseInt(prompt("Ingrese monto de reinversión mensual. Ej: 3000"));
+
+
+
+
+--PARA EL DESAFIO DE EVENTOS--
+let capitalInicial = document.getElementById("input_CI").value;
+  console.log(capitalInicial);
+  let tasaDeInteres = document.getElementById("input_Interes").value;
+  let tiempoDeAhorro = document.getElementById("input_Plazo").value;
+  let capitalReinversion = document.getElementById("input_CR").value;
+--agregar addEventListener(keyboard) asociado al id del input del HTML.

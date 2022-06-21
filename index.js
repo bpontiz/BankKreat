@@ -22,14 +22,13 @@ class ServicioInteres {
     * Descripción: función que calcula el interés compuesto a partir
     * de capital inicial sin reinversión parcial.
     */
-  let capitalInicial, capitalFinal, tasaDeInteres, tiempoDeAhorro, capitalReinversion;
   alert("A continuación ingreserá los datos de la calculadora.");
-  capitalInicial = parseInt(prompt("Ingrese capital inicial. Ej: 3000"));
-  tasaDeInteres = parseInt(prompt("Ingrese tasa de interés. Ej: 37%"));
-  tiempoDeAhorro = parseInt(prompt("Ingrese tiempo de ahorro en meses. Ej: 2"));
-  capitalReinversion = parseInt(prompt("Ingrese monto de reinversión mensual. Ej: 3000"))
+  let capitalInicial = parseInt(prompt("Ingrese capital inicial. Ej: 3000"));
+  let tasaDeInteres = parseInt(prompt("Ingrese tasa de interés. Ej: 37%"));
+  let tiempoDeAhorro = parseInt(prompt("Ingrese tiempo de ahorro en meses. Ej: 2"));
+  let capitalReinversion = parseInt(prompt("Ingrese monto de reinversión mensual. Ej: 3000"));
   alert("Chequea la consola!");
-  capitalFinal = 0;
+  let capitalFinal = 0;
   console.log("El capital inicial fue de: " + capitalInicial + " $");
   console.log("El monto de reinversión fue de: " + capitalReinversion + " $");
   for( let i = 1; i <= tiempoDeAhorro; i++ ){
@@ -47,7 +46,7 @@ class ServicioInteres {
   }
   let diferenciaCapital = capitalFinal - (capitalInicial + ( capitalReinversion * ( tiempoDeAhorro - 1 )));
   let resultadoCapital = diferenciaCapital.toFixed(2);
-  console.log("La ganancia total luego del tiempo de ahorro es de: " + resultadoCapital + " $");
+  console.log("La ganancia total en intereses, luego del tiempo de ahorro es de: " + resultadoCapital + " $");
   }
 }
 
@@ -75,3 +74,8 @@ function isInDataBase(testDatabase, askProfession) {
 }
 isInDataBase(databases, 'ECONOMISTA');
 
+//* Creacion de etiqueta HTML modificando el DOM mediante JS.
+let footer_dev = "Developed by Bruno Pontiz"
+let footer_sign = document.createElement("div")
+footer_sign.innerHTML = `<footer class="container-fluid><div class="row"><h5 class="footerSign">${footer_dev}</h5></div></footer>`;
+document.body.appendChild(footer_sign);
