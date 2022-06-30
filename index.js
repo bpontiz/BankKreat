@@ -1,30 +1,47 @@
 //* Consigna: CREAR UN SIMULADOR INTERACTIVO INCORPORANDO ARRAYS
 //*           Y UTILIZANDO METODOS Y CLASES VISTOS EN CLASE.
-//*           PRIMERA PRE ENTREGA DE TRABAJO FINAL
+//*           SEGUNDA PRE ENTREGA DE TRABAJO FINAL.
 
 //? Enunciado: Calcular la tasa de interés compuesto a una 
 //?            determinada cantidad de tiempo en meses.
 
-class ServicioInteres {
-  constructor(nombre, apellido, profesion) {
+class Users {
+  constructor(nombre, profesion) {
     this.nombre = nombre.toUpperCase();
-    this.apellido = apellido.toUpperCase();
     this.profesion = profesion.toUpperCase();
+  }
+  guardarUser() {
+    let array_newUser = [];
+    let eventGetName = document.getElementById("input_Name").value;
+    let eventGetProfession = document.getElementById("input_Profession").value;
+    array_newUser.push(eventGetName, eventGetProfession);
   }
   mostrarUser() {
     /*
     * Descripción: función que muestra por consola los datos del usuario.
     */
-    console.log("Las credenciales del usuario son: "+this.profesion+" "+this.nombre+" "+this.apellido);
+    console.log(`Las credenciales del usuario son: ${this.profesion} ${this.nombre}.`);
   }
-  
 }
+
+function sendUser() {
+  let eventGetName = document.getElementById("input_Name").value;
+  let eventGetProfession = document.getElementById("input_Profession").value;
+  const user1 = new Users(eventGetName, eventGetProfession);
+  if(eventGetName && eventGetProfession){
+    user1.guardarUser();
+    user1.mostrarUser();
+  }
+}
+
 
 //* AddEventListener de cambios en los parametros introducidos por el usuario.
 document.getElementById("input_CI").addEventListener('change', interesCompuesto);
 document.getElementById("input_Interes").addEventListener('change', interesCompuesto);
 document.getElementById("input_Plazo").addEventListener('change', interesCompuesto);
 document.getElementById("input_CR").addEventListener('change', interesCompuesto);
+document.getElementById("input_Name").addEventListener('change', sendUser);
+document.getElementById("input_Profession").addEventListener('change', sendUser);
 
 function interesCompuesto() {
   /*
@@ -57,32 +74,11 @@ function interesCompuesto() {
     let diferenciaCapital = capitalFinal - (eventCapitalInicial + ( eventCapitalReinversion * ( eventTiempoDeAhorro - 1 )));
     let resultadoCapital = diferenciaCapital.toFixed(2);
     console.log(`La ganancia total en intereses, luego del tiempo de ahorro es de: ${resultadoCapital} $`);
-    // let DOMCapitalFinal = document.createElement("div");
-    // DOMCapitalFinal.innerHTML = `
-    //                             <div class="row">
-    //                               <div class="col-lg-12">
-    //                                 <h3 class="finalCapitalText">C.F.</h3>
-    //                                 <h3 class="mount">${resultadoCapital} $</h3>
-    //                               </div>
-    //                             </div>`;
-    // document.body.appendChild(DOMCapitalFinal);
     let DOMCapitalFinal = document.getElementById("DOMCapitalFinal_div");
     let DOMCapitalFinal_h3 = document.createElement("h3");
     DOMCapitalFinal_h3.innerHTML = `<p id="mountCapitalFinal_p">El interés ganado a los ${eventTiempoDeAhorro} meses es de: ${resultadoCapital} $</p><p id="mountCapitalFinal_p">El capital final es de: ${resultadoInteres} $</p>`;
     DOMCapitalFinal.append(DOMCapitalFinal_h3);
-
   }
-}
-
-//* Declaración de objetos para armado de base de datos.
-let databases = [];
-alert("Bienvenido a la calculadora de interés compuesto!");
-let pedirNombre = prompt("Ingrese su nombre:");
-let pedirApellido = prompt("Ingrese su apellido:");
-let pedirProfesion = prompt("Ingrese su profesión:");
-databases.push(new ServicioInteres(pedirNombre, pedirApellido, pedirProfesion));
-for(const interes of databases){
-  interes.mostrarUser();
 }
 
 //* Búsqueda del usuario segun las credenciales introducidas 
@@ -99,10 +95,20 @@ function isInDataBase(testDatabase, askProfession) {
     console.log(economistValidation);
   });
 }
-isInDataBase(databases, 'ECONOMISTA');
 
 //* Creacion de etiqueta HTML modificando el DOM mediante JS.
 let footer_dev = "Developed by Bruno Pontiz"
 let footer_sign = document.createElement("div")
 footer_sign.innerHTML = `<footer class="container-fluid><div class="row"><h5 class="footerSign">${footer_dev}</h5></div></footer>`;
 document.body.appendChild(footer_sign);
+
+
+// Declaración de objetos para armado de base de datos.
+// let databases = [];
+// let eventPedirNombre = document.getElementById("input_Name");
+// let eventPedirProfesion = document.getElementById("input_Profession");
+// const user1 = databases.push(new ServicioInteres(eventPedirNombre, eventPedirProfesion));
+// for(const user of databases){
+//   user.mostrarUser();
+// }
+// user1.isInDataBase(databases, 'ECONOMISTA');
