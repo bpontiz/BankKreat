@@ -30,10 +30,11 @@
                 <h3><input class="inputUser text-center" placeholder="Indique su profesión" id="input_Profession" type="text"></h3>
             </div>
         </section>
-        <section class="interesValues">
+        <section class="row interesValues">
             <div class="row">
                 <div class="col-lg-3 text-center tarjeta">
                     <h3 class="concept">C.I.</h3>
+                    <p class="italic_CI_CR">Capital Inicial</p>
                     <h3 class="mount"><input id="input_CI" class="inputMount" type="number" placeholder="Ej.: 5000">$</h3>
                 </div>
                 <div class="col-lg-3 text-center tarjeta">
@@ -46,10 +47,15 @@
                 </div>
                 <div class="col-lg-3 text-center tarjeta">
                     <h3 class="concept">C.R.</h3>
+                    <p class="italic_CI_CR">Capital de Reinversión</p>
                     <h3 class="mount"><input id="input_CR" class="inputMount" type="number" placeholder="Ej.: 5000">$</h3>
                 </div>
             </div>  
         </section>
+        <div class="row div_buttons">
+            <button id="buttonReset_values" class="button_values">Borrar valores</button>
+            <button id="buttonReset_userKeys" class="button_userKeys">Borrar usuario</button>
+        </div>
         <div class="row">
             <div class="col-lg-12" id="DOMCapitalFinal_div">
                 <h3 class="finalCapitalText">Capital Final</h3>

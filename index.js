@@ -11,20 +11,20 @@ class Users {
     this.profesion = profesion.toUpperCase();
   }
   guardarUser() {
+    //* Descripción: método que guarda los string inputs por eventos en un array.
     let array_newUser = [];
     let eventGetName = document.getElementById("input_Name").value;
     let eventGetProfession = document.getElementById("input_Profession").value;
     array_newUser.push(eventGetName, eventGetProfession);
   }
   mostrarUser() {
-    /*
-    * Descripción: función que muestra por consola los datos del usuario.
-    */
-    console.log(`Las credenciales del usuario son: ${this.profesion} ${this.nombre}.`);
+    //* Descripción: método que muestra por consola los datos del usuario.
+    console.log(`Las credenciales del usuario son: ${this.profesion} ${this.nombre}`);
   }
 }
 
 function sendUser() {
+  //* Descripción: función que envía los datos de usuario introducidos a la clase Users.
   let eventGetName = document.getElementById("input_Name").value;
   let eventGetProfession = document.getElementById("input_Profession").value;
   const user1 = new Users(eventGetName, eventGetProfession);
@@ -35,13 +35,17 @@ function sendUser() {
 }
 
 
-//* AddEventListener de cambios en los parametros introducidos por el usuario.
+//* AddEventListener de cambios en los parámetros introducidos por el usuario.
 document.getElementById("input_CI").addEventListener('change', interesCompuesto);
 document.getElementById("input_Interes").addEventListener('change', interesCompuesto);
 document.getElementById("input_Plazo").addEventListener('change', interesCompuesto);
 document.getElementById("input_CR").addEventListener('change', interesCompuesto);
 document.getElementById("input_Name").addEventListener('change', sendUser);
+document.getElementById("input_Name").addEventListener('change', userLocalStorage);
 document.getElementById("input_Profession").addEventListener('change', sendUser);
+document.getElementById("input_Profession").addEventListener('change', userLocalStorage);
+document.getElementById("buttonReset_values").addEventListener('click', resetValues);
+document.getElementById("buttonReset_userKeys").addEventListener('click', deleteUser);
 
 function interesCompuesto() {
   /*
@@ -76,7 +80,7 @@ function interesCompuesto() {
     console.log(`La ganancia total en intereses, luego del tiempo de ahorro es de: ${resultadoCapital} $`);
     let DOMCapitalFinal = document.getElementById("DOMCapitalFinal_div");
     let DOMCapitalFinal_h3 = document.createElement("h3");
-    DOMCapitalFinal_h3.innerHTML = `<p id="mountCapitalFinal_p">El interés ganado a los ${eventTiempoDeAhorro} meses es de: ${resultadoCapital} $</p><p id="mountCapitalFinal_p">El capital final es de: ${resultadoInteres} $</p>`;
+    DOMCapitalFinal_h3.innerHTML = `<p id="mountCapitalFinal_p">El interés ganado a los ${eventTiempoDeAhorro} meses es de: ${resultadoCapital}$</p><p id="mountCapitalFinal_p">El capital final es de: ${resultadoInteres} $</p>`;
     DOMCapitalFinal.append(DOMCapitalFinal_h3);
   }
 }
@@ -96,19 +100,34 @@ function isInDataBase(testDatabase, askProfession) {
   });
 }
 
-//* Creacion de etiqueta HTML modificando el DOM mediante JS.
+//* Creación de etiqueta HTML modificando el DOM mediante JS.
 let footer_dev = "Developed by Bruno Pontiz"
 let footer_sign = document.createElement("div")
 footer_sign.innerHTML = `<footer class="container-fluid><div class="row"><h5 class="footerSign">${footer_dev}</h5></div></footer>`;
 document.body.appendChild(footer_sign);
 
-
-// Declaración de objetos para armado de base de datos.
-// let databases = [];
-// let eventPedirNombre = document.getElementById("input_Name");
-// let eventPedirProfesion = document.getElementById("input_Profession");
-// const user1 = databases.push(new ServicioInteres(eventPedirNombre, eventPedirProfesion));
-// for(const user of databases){
-//   user.mostrarUser();
-// }
 // user1.isInDataBase(databases, 'ECONOMISTA');
+function userLocalStorage(){
+  //* Descripción: función que almacena en local storage la información introducida por el usuario.
+  let key_name = "name";
+  let key_profession = "profession"
+  let value_name = document.getElementById("input_Name").value;
+  let value_profession = document.getElementById("input_Profession").value;
+  const user1_info = {[key_name]: value_name, [key_profession]: value_profession};
+  let user1_info_JSON = JSON.stringify(user1_info);
+  localStorage.setItem("User Info", user1_info_JSON);
+}
+
+function resetValues() {
+  document.getElementById("input_CI").value = null;
+  document.getElementById("input_Interes").value = null;
+  document.getElementById("input_Plazo").value = null;
+  document.getElementById("input_CR").value = null;
+
+}
+
+function deleteUser() {
+  document.getElementById("input_Name").value = null;
+  document.getElementById("input_Profession").value = null;
+  localStorage.clear();
+}
