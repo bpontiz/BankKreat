@@ -110,7 +110,7 @@ document.body.appendChild(footer_sign);
 function userLocalStorage(){
   //* Descripción: función que almacena en local storage la información introducida por el usuario.
   let key_name = "name";
-  let key_profession = "profession"
+  let key_profession = "profession";
   let value_name = document.getElementById("input_Name").value;
   let value_profession = document.getElementById("input_Profession").value;
   const user1_info = {[key_name]: value_name, [key_profession]: value_profession};
@@ -119,14 +119,15 @@ function userLocalStorage(){
 }
 
 function resetValues() {
+  //* Descripción: resetea los valores de la calculadora de interés introducidos por el usuario.
   document.getElementById("input_CI").value = null;
   document.getElementById("input_Interes").value = null;
   document.getElementById("input_Plazo").value = null;
   document.getElementById("input_CR").value = null;
-
 }
 
 function deleteUser() {
+  //* Descripción: borra los datos de usuario introducidos por él mismo.
   document.getElementById("input_Name").value = null;
   document.getElementById("input_Profession").value = null;
   localStorage.clear();
