@@ -35,7 +35,7 @@ function sendUser() {
 }
 
 
-//* AddEventListener de cambios en los parámetros introducidos por el usuario.
+//* AddEventListener de actividad del usuario.
 document.getElementById("input_CI").addEventListener('change', interesCompuesto);
 document.getElementById("input_Interes").addEventListener('change', interesCompuesto);
 document.getElementById("input_Plazo").addEventListener('change', interesCompuesto);
@@ -52,6 +52,7 @@ function interesCompuesto() {
   * Descripción: función que calcula el interés compuesto a partir
   * de capital inicial con reinversión mensual.
   */
+  let result_format_US = new Intl.NumberFormat('en-US');
   let eventCapitalInicial = parseInt(document.getElementById("input_CI").value);
   let eventTasaDeInteres = parseInt(document.getElementById("input_Interes").value);
   let eventTiempoDeAhorro = parseInt(document.getElementById("input_Plazo").value);
@@ -68,11 +69,11 @@ function interesCompuesto() {
       if( i == 1 ){
         capitalFinal = (eventCapitalInicial) * (1+((eventTasaDeInteres/100)/12))**i;
         resultadoInteres = capitalFinal.toFixed(2);
-        console.log(`»El capital final al mes ${i} es ${resultadoInteres} $`);
+        console.log(`»El capital final al mes ${i} es ${result_format_US.format(resultadoInteres)} $`);
       }else{
         capitalFinal = (eventCapitalInicial + eventCapitalReinversion*(i-1))*(1+((eventTasaDeInteres/100)/12))**i;
         resultadoInteres = capitalFinal.toFixed(2);
-        console.log(`»El capital final al mes ${i} es ${resultadoInteres} $`);
+        console.log(`»El capital final al mes ${i} es ${result_format_US.format(resultadoInteres)} $`);
       }
     }
     let diferenciaCapital = capitalFinal - (eventCapitalInicial + ( eventCapitalReinversion * ( eventTiempoDeAhorro - 1 )));
@@ -80,7 +81,7 @@ function interesCompuesto() {
     console.log(`La ganancia total en intereses, luego del tiempo de ahorro es de: ${resultadoCapital} $`);
     let DOMCapitalFinal = document.getElementById("DOMCapitalFinal_div");
     let DOMCapitalFinal_h3 = document.createElement("h3");
-    DOMCapitalFinal_h3.innerHTML = `<p id="mountCapitalFinal_p">El interés ganado a los ${eventTiempoDeAhorro} meses es de: ${resultadoCapital}$</p><p id="mountCapitalFinal_p">El capital final es de: ${resultadoInteres} $</p>`;
+    DOMCapitalFinal_h3.innerHTML = `<p id="mountCapitalFinal_p">El interés ganado a los ${eventTiempoDeAhorro} meses es de: ${result_format_US.format(resultadoCapital)}$</p><p id="mountCapitalFinal_p">El capital final es de: ${result_format_US.format(resultadoInteres)} $</p>`;
     DOMCapitalFinal.append(DOMCapitalFinal_h3);
   }
 }

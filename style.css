@@ -4,6 +4,8 @@
     box-sizing: border-box;
 }
 
+/* background-color: #023047; */
+
 .headerStyle {
     background-color: #023047;
     color: gold;
@@ -29,6 +31,7 @@ main .concept {
 
 main {
     font-family: 'Playfair Display SC', serif;
+    /* background-color: #000000; */
 }
 
 main .interesValues {
@@ -98,12 +101,18 @@ main .button_values, .button_userKeys {
     padding: 10px;
     margin: 1%;
     border: none;
-    border-radius: 0%;
+    border-radius: 10px;
     background-color: #023047;
     color: gold;
 }
 
+.button_values:active,.button_userKeys:active{
+    background-color: white;
+    color: black;
+}
+
 footer {
+    /* background-color: #000000; */
     display: flex;
     flex-direction: column;
     justify-content: center;
