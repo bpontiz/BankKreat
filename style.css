@@ -6,10 +6,8 @@
 
 /* background-color: #023047; */
 
-.headerStyle {
-    background-color: #023047;
-    color: gold;
-    padding: 1%;
+header .titleBankKreat {
+    font-size: 1.5rem;
 }
 
 main .inputMount {
@@ -95,20 +93,25 @@ main .div_buttons {
 
 main .button_values, .button_userKeys {
     width: 10%;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     padding: 10px;
     margin: 1%;
     border: none;
     border-radius: 10px;
-    background-color: #023047;
-    color: gold;
+    background-color: #CCCCCC;
+    color: #000000;
 }
 
 .button_values:active,.button_userKeys:active{
     background-color: white;
     color: black;
+}
+
+main .welcome_message {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
 }
 
 footer {

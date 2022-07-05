@@ -35,26 +35,42 @@
         </nav>
     </header>
     <main class="container-fluid mainHeight">
-        <section class="userData text-center">
-            <div class="row">
-                <h3 class="userText">User</h3>
-                <h3><input class="inputUser text-center" id="input_Name" placeholder="Name & Lastname" type="text"></h3>
-            </div>
-            <div class="row">
-                <h3 class="userText">Profession</h3>
-                <h3><input class="inputUser text-center" placeholder="Profession" id="input_Profession" type="text"></h3>
-            </div>
-        </section>
         <div class="row">
             <div class="text-center">
-                <strong id="already_user" class="welcome_message"></strong>
+                <span id="already_user"></span>
             </div>
         </div>
+        <section class="row interesValues">
+            <div class="row">
+                <div class="col-lg-3 text-center tarjeta">
+                    <h3 class="concept">Investment</h3>
+                    <h3 class="mount"><input id="input_CI" class="inputMount" type="number" placeholder="e.g. 5000">$</h3>
+                </div>
+                <div class="col-lg-3 text-center tarjeta">
+                    <h3 class="concept">Annual bank Interest</h3>
+                    <h3 class="mount"><input id="input_Interes" class="inputMount" type="number" placeholder="e.g. 37">%</h3>    
+                </div>
+                <div class="col-lg-3 text-center tarjeta">
+                    <h3 class="concept">Period</h3>
+                    <h3 class="mount"><input id="input_Plazo" class="inputMount" type="number" placeholder="e.g. 12">M</h3>
+                </div>
+                <div class="col-lg-3 text-center tarjeta">
+                    <h3 class="concept">Monthly reinvestment</h3>
+                    <h3 class="mount"><input id="input_CR" class="inputMount" type="number" placeholder="e.g. 5000">$</h3>
+                </div>
+            </div>  
+        </section>
         <div class="row div_buttons">
-            <button id="buttonSend_userData" type="button" class="btn btn-dark button_userKeys">Sign Up</button>
-            <button id="buttonReset_userKeys" type="button" class="btn btn-dark button_userKeys">Delete user</button>
+            <button id="buttonReset_values" type="button" class="btn btn-dark button_values">Delete values</button>
+        </div>
+        <div class="row">
+            <div class="col-lg-12" id="DOMCapitalFinal_div">
+                <h3 class="finalCapitalText"></h3>
+                <h3 id="mountCapitalFinal">
+
+                </h3>
+            </div>
         </div>
     </main>
-    <script src="index.js"></script>
-    <script src="node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <script src="calculator.js"></script>
 </html>

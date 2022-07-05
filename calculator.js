@@ -16,7 +16,6 @@ class Users {
     let eventGetName = document.getElementById("input_Name").value;
     let eventGetProfession = document.getElementById("input_Profession").value;
     array_newUser.push(eventGetName, eventGetProfession);
-    console.log(array_newUser);
   }
   mostrarUser() {
     //* Descripción: método que muestra por consola los datos del usuario.
@@ -33,13 +32,51 @@ function sendUser() {
 }
 
 
-
 //* AddEventListener de actividad del usuario.
-document.getElementById("input_Name").addEventListener('change', sendUser);
-document.getElementById("input_Name").addEventListener('change', userLocalStorage);
-document.getElementById("input_Profession").addEventListener('change', sendUser);
-document.getElementById("input_Profession").addEventListener('change', userLocalStorage);
-document.getElementById("buttonReset_userKeys").addEventListener('click', deleteUser);
+document.getElementById("input_CI").addEventListener('change', interesCompuesto);
+document.getElementById("input_Interes").addEventListener('change', interesCompuesto);
+document.getElementById("input_Plazo").addEventListener('change', interesCompuesto);
+document.getElementById("input_CR").addEventListener('change', interesCompuesto);
+document.getElementById("buttonReset_values").addEventListener('click', resetValues);
+
+function interesCompuesto() {
+  /*
+  * Descripción: función que calcula el interés compuesto a partir
+  * de capital inicial con reinversión mensual.
+  */
+  let result_format_US = new Intl.NumberFormat('en-US');
+  let eventCapitalInicial = parseInt(document.getElementById("input_CI").value);
+  let eventTasaDeInteres = parseInt(document.getElementById("input_Interes").value);
+  let eventTiempoDeAhorro = parseInt(document.getElementById("input_Plazo").value);
+  let eventCapitalReinversion = parseInt(document.getElementById("input_CR").value);
+  if( eventCapitalInicial && eventTasaDeInteres && eventTiempoDeAhorro && eventCapitalReinversion ){
+    let capitalFinal = 0;
+    let resultadoInteres;
+    console.log(`Initial investment: ${eventCapitalInicial} $`);
+    console.log(`Annual bank interest: ${eventTasaDeInteres} %`);
+    console.log(`Period: ${eventTiempoDeAhorro} Months`);
+    console.log(`Monthly reinvestment: ${eventCapitalReinversion} $`);
+    for( let i = 1; i <= eventTiempoDeAhorro; i++ ){
+      //! Formula de interes compuesto
+      i == 1 ? (
+        capitalFinal = (eventCapitalInicial) * (1+((eventTasaDeInteres/100)/12))**i,
+        resultadoInteres = capitalFinal.toFixed(2),
+        console.log(`»Total mount at month number ${i} is ${result_format_US.format(resultadoInteres)} $`)
+      ) : (
+        capitalFinal = (eventCapitalInicial + eventCapitalReinversion*(i-1))*(1+((eventTasaDeInteres/100)/12))**i,
+        resultadoInteres = capitalFinal.toFixed(2),
+        console.log(`»Total mount at month number ${i} es ${result_format_US.format(resultadoInteres)} $`)
+      );
+    }
+    let diferenciaCapital = capitalFinal - (eventCapitalInicial + ( eventCapitalReinversion * ( eventTiempoDeAhorro - 1 )));
+    let resultadoCapital = diferenciaCapital.toFixed(2);
+    console.log(`Interest profit after savings period is: ${resultadoCapital} $`);
+    let DOMCapitalFinal = document.getElementById("DOMCapitalFinal_div");
+    let DOMCapitalFinal_h3 = document.createElement("h3");
+    DOMCapitalFinal_h3.innerHTML = `<p id="mountCapitalFinal_p">Interest profit after ${eventTiempoDeAhorro} months is: ${result_format_US.format(resultadoCapital)}$</p><p id="mountCapitalFinal_p">Final mount is: ${result_format_US.format(resultadoInteres)} $</p>`;
+    DOMCapitalFinal.append(DOMCapitalFinal_h3);
+  }
+}
 
 //* Búsqueda del usuario segun las credenciales introducidas 
 //* por él mismo. 
@@ -72,11 +109,14 @@ function userLocalStorage(){
   const user1_info = {[key_name]: value_name, [key_profession]: value_profession};
   let user1_info_JSON = JSON.stringify(user1_info);
   localStorage.setItem("User Info", user1_info_JSON);
-  let value_alreadyUser = document.getElementById("already_user");
-  let {validate_user_name, validate_user_profession} = user1_info;
-  validate_user_name = value_name.toUpperCase();
-  validate_user_profession = value_profession.toUpperCase();
-  (validate_user_name && validate_user_profession) ? (value_alreadyUser.innerHTML = `Welcome ${validate_user_profession}, ${validate_user_name}!`) : false;
+}
+
+function resetValues() {
+  //* Descripción: resetea los valores de la calculadora de interés introducidos por el usuario.
+  document.getElementById("input_CI").value = null;
+  document.getElementById("input_Interes").value = null;
+  document.getElementById("input_Plazo").value = null;
+  document.getElementById("input_CR").value = null;
 }
 
 function deleteUser() {
@@ -85,15 +125,3 @@ function deleteUser() {
   document.getElementById("input_Profession").value = null;
   localStorage.clear();
 }
-
-//* Agregando sweetalert cuando se clickea boton de Sign Up.
-let user_signUp = document.getElementById("buttonSend_userData");
-user_signUp.addEventListener('click', () => {
-  Swal.fire({
-    position: 'top-end',
-    icon: 'success',
-    title: 'User registered',
-    showConfirmButton: false,
-    timer: 2000
-  })}
-)
