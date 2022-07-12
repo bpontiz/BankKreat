@@ -24,6 +24,8 @@ class Users {
   }
 }
 
+document.getElementById("input_Name").addEventListener('change', sendUser);
+document.getElementById("input_Profession").addEventListener('change', sendUser);
 function sendUser() {
   //* Descripción: función que envía los datos de usuario introducidos a la clase Users.
   let eventGetName = document.getElementById("input_Name").value;
@@ -31,15 +33,6 @@ function sendUser() {
   const user1 = new Users(eventGetName, eventGetProfession);
   eventGetName && eventGetProfession ? (user1.guardarUser() && user1.mostrarUser()) : false;
 }
-
-
-
-//* AddEventListener de actividad del usuario.
-document.getElementById("input_Name").addEventListener('change', sendUser);
-document.getElementById("input_Name").addEventListener('change', userLocalStorage);
-document.getElementById("input_Profession").addEventListener('change', sendUser);
-document.getElementById("input_Profession").addEventListener('change', userLocalStorage);
-document.getElementById("buttonReset_userKeys").addEventListener('click', deleteUser);
 
 //* Búsqueda del usuario segun las credenciales introducidas 
 //* por él mismo. 
@@ -56,13 +49,9 @@ function isInDataBase(testDatabase, askProfession) {
   });
 }
 
-//* Creación de etiqueta HTML modificando el DOM mediante JS.
-let footer_dev = "Developed by Bruno Pontiz"
-let footer_sign = document.createElement("div")
-footer_sign.innerHTML = `<footer class="container-fluid><div class="row"><h5 class="footerSign">${footer_dev}</h5></div></footer>`;
-document.body.appendChild(footer_sign);
-
 // user1.isInDataBase(databases, 'ECONOMISTA');
+document.getElementById("input_Name").addEventListener('change', userLocalStorage);
+document.getElementById("input_Profession").addEventListener('change', userLocalStorage);
 function userLocalStorage(){
   //* Descripción: función que almacena en local storage la información introducida por el usuario.
   let key_name = "name";
@@ -79,11 +68,13 @@ function userLocalStorage(){
   (validate_user_name && validate_user_profession) ? (value_alreadyUser.innerHTML = `Welcome ${validate_user_profession}, ${validate_user_name}!`) : false;
 }
 
+document.getElementById("buttonReset_userKeys").addEventListener('click', deleteUser);
 function deleteUser() {
   //* Descripción: borra los datos de usuario introducidos por él mismo.
   document.getElementById("input_Name").value = null;
   document.getElementById("input_Profession").value = null;
   localStorage.clear();
+  document.getElementById("already_user").innerHTML = "";  
 }
 
 //* Agregando sweetalert cuando se clickea boton de Sign Up.
@@ -94,6 +85,12 @@ user_signUp.addEventListener('click', () => {
     icon: 'success',
     title: 'User registered',
     showConfirmButton: false,
-    timer: 2000
+    timer: 1500
   })}
 )
+
+//* Creación de etiqueta HTML modificando el DOM mediante JS.
+let footer_dev = "Developed by Bruno Pontiz"
+let footer_sign = document.createElement("div")
+footer_sign.innerHTML = `<footer class="container-fluid><div class="row"><h5 class="footerSign">${footer_dev}</h5></div></footer>`;
+document.body.appendChild(footer_sign);

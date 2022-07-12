@@ -31,14 +31,14 @@ function sendUser() {
   eventGetName && eventGetProfession ? (user1.guardarUser() && user1.mostrarUser()) : false;
 }
 
-
 //* AddEventListener de actividad del usuario.
 document.getElementById("input_CI").addEventListener('change', interesCompuesto);
 document.getElementById("input_Interes").addEventListener('change', interesCompuesto);
 document.getElementById("input_Plazo").addEventListener('change', interesCompuesto);
 document.getElementById("input_CR").addEventListener('change', interesCompuesto);
-document.getElementById("buttonReset_values").addEventListener('click', resetValues);
 
+let DOMCapitalFinal = document.getElementById("DOMCapitalFinal_div");
+let DOMCapitalFinal_h3 = document.createElement("h3");
 function interesCompuesto() {
   /*
   * Descripción: función que calcula el interés compuesto a partir
@@ -71,10 +71,11 @@ function interesCompuesto() {
     let diferenciaCapital = capitalFinal - (eventCapitalInicial + ( eventCapitalReinversion * ( eventTiempoDeAhorro - 1 )));
     let resultadoCapital = diferenciaCapital.toFixed(2);
     console.log(`Interest profit after savings period is: ${resultadoCapital} $`);
-    let DOMCapitalFinal = document.getElementById("DOMCapitalFinal_div");
-    let DOMCapitalFinal_h3 = document.createElement("h3");
-    DOMCapitalFinal_h3.innerHTML = `<p id="mountCapitalFinal_p">Interest profit after ${eventTiempoDeAhorro} months is: ${result_format_US.format(resultadoCapital)}$</p><p id="mountCapitalFinal_p">Final mount is: ${result_format_US.format(resultadoInteres)} $</p>`;
-    DOMCapitalFinal.append(DOMCapitalFinal_h3);
+    let buttonCalculate_values = document.getElementById("buttonCalculate_values");
+    buttonCalculate_values.addEventListener('click', () => {
+      DOMCapitalFinal_h3.innerHTML = `<p id="mountCapitalFinal_p">Interest profit after ${eventTiempoDeAhorro} months is: ${result_format_US.format(resultadoCapital)}$</p><p id="mountCapitalFinal_p">Final mount is: ${result_format_US.format(resultadoInteres)} $</p>`;
+      DOMCapitalFinal.append(DOMCapitalFinal_h3);
+    })
   }
 }
 
@@ -111,12 +112,14 @@ function userLocalStorage(){
   localStorage.setItem("User Info", user1_info_JSON);
 }
 
+document.getElementById("buttonReset_values").addEventListener('click', resetValues);
 function resetValues() {
   //* Descripción: resetea los valores de la calculadora de interés introducidos por el usuario.
   document.getElementById("input_CI").value = null;
   document.getElementById("input_Interes").value = null;
   document.getElementById("input_Plazo").value = null;
   document.getElementById("input_CR").value = null;
+  DOMCapitalFinal_h3.innerHTML = "";
 }
 
 function deleteUser() {
