@@ -4,10 +4,57 @@
     box-sizing: border-box;
 }
 
+header {
+    border-bottom: 1px solid #555555;
+}
+
 /* background-color: #4E5953; */
 
 header .titleBankKreat {
     font-size: 1.5rem;
+    font-family: 'Playfair Display SC', serif;
+}
+
+main {
+    font-family: 'Playfair Display SC', serif;
+    width: 100vw;
+    height: 85vh;
+    position: relative;
+    background-image: url('/multimedia/petronesTowers.jpeg');
+    background-size: cover;
+    z-index: 50;
+}
+
+main::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.25);
+    z-index: -1;
+}
+
+.mainCalculator {
+    font-family: 'Playfair Display SC', serif;
+    width: 100vw;
+    height: 85vh;
+    position: relative;
+    background-image: url('/multimedia/littleBird.jpeg');
+    background-size: cover;
+    z-index: 50;
+}
+
+.mainCalculator::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.25);
+    z-index: -1;
 }
 
 main .inputMount {
@@ -15,6 +62,25 @@ main .inputMount {
     width: 40%;
     text-align: center;
     font-size: 80%;
+    border: none;
+    padding: 1%;
+    background-color: transparent;
+    color: #FFFFFF;
+    resize: none;
+    outline: 0;
+}
+
+main .inputMount:focus {
+    animation: pulse 1s;
+    box-shadow: 0 0 0 0.5em transparent;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0; }
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
 }
 
 main .inputFinalMount {
@@ -24,12 +90,8 @@ main .inputFinalMount {
 
 main .concept {
     font-size: 100%;
-    font-weight: bold;
-}
-
-main {
-    font-family: 'Playfair Display SC', serif;
-    /* background-color: #000000; */
+    font-weight: normal;
+    color: #FFFFFF;
 }
 
 main .interesValues {
@@ -48,29 +110,32 @@ main .userData {
     margin-left: 2.5%;
 }
 
-main .inputMount {
-    border: none;
-    padding: 1%;
-}
-
 main .inputUser {
     border: none;
-    border-bottom: 2px solid gold;
+    border-bottom: 2px #FFFFFF ridge;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 0.8rem;
     padding: 1%;
     outline: none;
     resize: none;
+    background-color: transparent;
+    color: #FFFFFF;
+}
+
+main .inputUser:focus {
+    border-bottom: 2px solid gold;
 }
 
 main .userText, .finalCapitalText {
     font-size: 120%;
-    font-weight: bold;
+    font-weight: normal;
     padding: 1%;
+    color: #FFFFFF;
 }
 
 main .mount {
     font-size: 150%;
+    color: #FFFFFF;
 }
 
 main #mountCapitalFinal_p{
@@ -98,10 +163,23 @@ main .button_values, .button_userKeys {
     font-weight: bold;
     padding: 10px;
     margin: 1%;
-    border: none;
+    border: 2px solid #FFFFFF;
     border-radius: 10px;
-    background-color: #CCCCCC;
+    background-color: transparent;
+    color: #FFFFFF;
+}
+
+main .button_userKeys:focus {
+    box-shadow: inset 0 0 0 2em gold;
+    transform: translateY(-0.25em);
+    transition: 0.25s ease-in;
+    border: 2px solid gold;
     color: #000000;
+}
+
+main .button_userKeys:visited {
+    border: 2px solid #FFFFFF;
+    color: #FFFFFF;
 }
 
 main .button_values {
@@ -117,19 +195,29 @@ main .button_dollarSymbol {
     margin: 1%;
     border: none;
     border-radius: 50%;
-    background-color: gold;
+    background: radial-gradient(circle, #EEEEEE, #CCCCCC, #999999);
     color: #000000;
 }
 
-.button_values:active,.button_userKeys:active{
+.button_values:active {
     background-color: white;
     color: black;
+}
+
+.button_userKeys:hover {
+    box-shadow: inset 0 0 0 2em gold;
+    transform: translateY(-0.25em);
+    transition: 0.25s ease-in;
+    border: 2px solid gold;
+    color: #000000;
 }
 
 main .welcome_message {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 0.8rem;
+    color: #FFFFFF;
 }
+
 
 footer {
     /* background-color: #000000; */
@@ -138,9 +226,15 @@ footer {
     justify-content: center;
     align-content: center;
     align-items: center;
+    background-color: #222222;
+    height: max-content;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
 }
 
 footer .footerSign {
     text-align: center;
     font-size: 90%;
+    color: #AAAAAA;
 }

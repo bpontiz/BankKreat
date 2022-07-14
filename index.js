@@ -28,7 +28,11 @@ function sendUser() {
   let eventGetName = document.getElementById("input_Name").value;
   let eventGetProfession = document.getElementById("input_Profession").value;
   const user1 = new Users(eventGetName, eventGetProfession);
-  eventGetName && eventGetProfession ? (user1.guardarUser() && user1.mostrarUser()) : false;
+  for(let j=0; j<=eventGetName.length; j++){
+    eventGetName[j]==String ? (
+      eventGetName && eventGetProfession ? (user1.guardarUser() && user1.mostrarUser()) : console.log("User not valid. Try another one.")
+    ) : console.log("User not valid. Try another one.");
+  }
 }
 
 // -Búsqueda del usuario segun las credenciales introducidas 
@@ -82,9 +86,16 @@ user_signUp.addEventListener('click', () => {
     icon: 'success',
     title: 'User registered',
     showConfirmButton: false,
-    timer: 1500
-  })}
-)
+    timer: 1500,
+    width: 250,
+    showClass: {
+      popup: 'animate__animated animate__fadeIn'
+    },
+    hideClass: {
+      popup: 'animate__animated animate__fadeOut'
+    }
+  })
+})
 
 // -Enviando recursos con POST method mediante fetch()
 // -URL de soporte: JSON Placeholder

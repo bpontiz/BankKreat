@@ -1,9 +1,6 @@
-//* Consigna: CREAR UN SIMULADOR INTERACTIVO INCORPORANDO ARRAYS
-//*           Y UTILIZANDO METODOS Y CLASES VISTOS EN CLASE.
-//*           SEGUNDA PRE ENTREGA DE TRABAJO FINAL.
-
-//? Enunciado: Calcular la tasa de interés compuesto a una 
-//?            determinada cantidad de tiempo en meses.
+//? App: Calcular la tasa de interés compuesto a una 
+//?      determinada cantidad de tiempo en meses con
+//?      o sin reinversion parcial.
 
 class Users {
   constructor(nombre, profesion) {
