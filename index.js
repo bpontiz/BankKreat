@@ -21,17 +21,27 @@ class Users {
   }
 }
 
-document.getElementById("input_Name").addEventListener('change', sendUser);
-document.getElementById("input_Profession").addEventListener('change', sendUser);
-function sendUser() {
-  // -Descripción: función que envía los datos de usuario introducidos a la clase Users.
-  let eventGetName = document.getElementById("input_Name").value;
-  let eventGetProfession = document.getElementById("input_Profession").value;
-  const user1 = new Users(eventGetName, eventGetProfession);
-  for(let j=0; j<=eventGetName.length; j++){
-    eventGetName[j]==String ? (
-      eventGetName && eventGetProfession ? (user1.guardarUser() && user1.mostrarUser()) : console.log("User not valid. Try another one.")
-    ) : console.log("User not valid. Try another one.");
+
+
+document.getElementById("input_Name").addEventListener('input', validateUser);
+document.getElementById("input_Profession").addEventListener('input', validateUser);
+function validateUser() {
+  // -Descripción: función que valida usuario y profesion.
+  let eventValidateName = document.getElementById("input_Name").value;
+  let eventValidateProfession = document.getElementById("input_Profession").value;
+  let containsANumber = /\d/;
+  if(containsANumber.test(eventValidateName)) {
+    alert("Ingrese un usuario valido.");
+  }
+  return validateUser();
+  document.getElementById("input_Name").addEventListener('change', sendUser);
+  document.getElementById("input_Profession").addEventListener('change', sendUser);
+  function sendUser() {
+    // -Descripción: función que envía los datos de usuario introducidos a la clase Users.
+    let eventGetName = document.getElementById("input_Name").value;
+    let eventGetProfession = document.getElementById("input_Profession").value;
+    const user1 = new Users(eventGetName, eventGetProfession);
+    eventGetName && eventGetProfession ? (user1.guardarUser() && user1.mostrarUser()) : false;
   }
 }
 
@@ -63,10 +73,10 @@ function userLocalStorage(){
   let user1_info_JSON = JSON.stringify(user1_info);
   localStorage.setItem("User Info", user1_info_JSON);
   let value_alreadyUser = document.getElementById("already_user");
-  let {validate_user_name, validate_user_profession} = user1_info;
-  validate_user_name = value_name.toUpperCase();
-  validate_user_profession = value_profession.toUpperCase();
-  (validate_user_name && validate_user_profession) ? (value_alreadyUser.innerHTML = `Welcome ${validate_user_profession}, ${validate_user_name}!`) : false;
+  let {upperCase_user_name, upperCase_user_profession} = user1_info;
+  upperCase_user_name = value_name.toUpperCase();
+  upperCase_user_profession = value_profession.toUpperCase();
+  (upperCase_user_name && upperCase_user_profession) ? (value_alreadyUser.innerHTML = `Welcome ${upperCase_user_profession}, ${upperCase_user_name}!`) : false;
 }
 
 document.getElementById("buttonReset_userKeys").addEventListener('click', deleteUser);
@@ -95,6 +105,10 @@ user_signUp.addEventListener('click', () => {
       popup: 'animate__animated animate__fadeOut'
     }
   })
+  setTimeout(openCalculator, 2500);
+  function openCalculator() {
+    window.open("calculator.html");
+  }
 })
 
 // -Enviando recursos con POST method mediante fetch()
@@ -121,5 +135,5 @@ db_buttonSend.addEventListener('click', () => {
 // -Creación de etiqueta HTML modificando el DOM mediante JS.
 let footer_dev = "Developed by Bruno Pontiz"
 let footer_sign = document.createElement("div")
-footer_sign.innerHTML = `<footer class="container-fluid><div class="row"><h5 class="footerSign">${footer_dev}</h5></div></footer>`;
+footer_sign.innerHTML = `<footer class="container-fluid text-center><div class="row"><h5 class="footerSign">${footer_dev}</h5></div></footer>`;
 document.body.appendChild(footer_sign);

@@ -218,6 +218,11 @@ main .welcome_message {
     color: #FFFFFF;
 }
 
+main {
+    margin-bottom: 0;
+    padding: 0;
+}
+
 
 footer {
     /* background-color: #000000; */
@@ -225,12 +230,12 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-content: center;
+    justify-items: center;
     align-items: center;
     background-color: #222222;
-    height: max-content;
     position: fixed;
-    bottom: 0;
     width: 100vw;
+    height: 300px;
 }
 
 footer .footerSign {
