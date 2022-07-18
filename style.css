@@ -151,9 +151,7 @@ main .italic_CI_CR {
 }
 
 main .div_buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    display: inline;
 }
 
 main .button_values, .button_userKeys {
@@ -215,14 +213,19 @@ main .button_dollarSymbol {
 main .welcome_message {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 0.8rem;
-    color: #FFFFFF;
+    color: #FFFFFF;   
 }
 
-main {
-    margin-bottom: 0;
-    padding: 0;
+main #already_user {
+    animation-name: appear;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
 }
 
+@keyframes appear {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
 
 footer {
     /* background-color: #000000; */
