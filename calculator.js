@@ -62,7 +62,7 @@ function interesCompuesto() {
       ) : (
         capitalFinal = (eventCapitalInicial + eventCapitalReinversion*(i-1))*(1+((eventTasaDeInteres/100)/12))**i,
         resultadoInteres = capitalFinal.toFixed(2),
-        console.log(`»Total mount at month number ${i} es ${result_format_US.format(resultadoInteres)} $`)
+        console.log(`»Total mount at month number ${i} is ${result_format_US.format(resultadoInteres)} $`)
       );
     }
     let diferenciaCapital = capitalFinal - (eventCapitalInicial + ( eventCapitalReinversion * ( eventTiempoDeAhorro - 1 )));
@@ -70,7 +70,7 @@ function interesCompuesto() {
     console.log(`Interest profit after savings period is: ${resultadoCapital} $`);
     let buttonCalculate_values = document.getElementById("buttonCalculate_values");
     buttonCalculate_values.addEventListener('click', () => {
-      DOMCapitalFinal_h3.innerHTML = `<p id="mountCapitalFinal_p">Interest profit after ${eventTiempoDeAhorro} months is: ${result_format_US.format(resultadoCapital)}$</p><p id="mountCapitalFinal_p">Final mount is: ${result_format_US.format(resultadoInteres)} $</p>`;
+      DOMCapitalFinal_h3.innerHTML = `<p id="mountCapitalFinal_p">Interest profit after ${eventTiempoDeAhorro} months is: ${result_format_US.format(resultadoCapital)} $</p><p id="mountCapitalFinal_p">Final mount is: ${result_format_US.format(resultadoInteres)} $</p>`;
       DOMCapitalFinal.append(DOMCapitalFinal_h3);
     })
   }
@@ -90,6 +90,7 @@ function isInDataBase(testDatabase, askProfession) {
     console.log(economistValidation);
   });
 }
+// user1.isInDataBase(databases, 'ECONOMISTA');
 
 // Creación de etiqueta HTML modificando el DOM mediante JS.
 let footer_dev = "Developed by Bruno Pontiz"
@@ -97,8 +98,8 @@ let footer_sign = document.createElement("div")
 footer_sign.innerHTML = `<footer class="container-fluid><div class="row"><h5 class="footerSign">${footer_dev}</h5></div></footer>`;
 document.body.appendChild(footer_sign);
 
-// user1.isInDataBase(databases, 'ECONOMISTA');
-function userLocalStorage(){
+
+function userLocalStorage() {
   // Descripción: función que almacena en local storage la información introducida por el usuario.
   let key_name = "name";
   let key_profession = "profession";
@@ -108,6 +109,13 @@ function userLocalStorage(){
   let user1_info_JSON = JSON.stringify(user1_info);
   localStorage.setItem("User Info", user1_info_JSON);
 }
+
+let nav_identificate_user = document.getElementById("user_identification");
+let DOM_nav_identificate_user = document.createElement("p");
+DOM_nav_identificate_user_JSON = JSON.parse(localStorage.getItem("User Info")).name;
+console.log(DOM_nav_identificate_user_JSON);
+DOM_nav_identificate_user.innerHTML = `<i class="bi bi-person"></i><p id="p_identificate_user">${DOM_nav_identificate_user_JSON}</p>`;
+nav_identificate_user.appendChild(DOM_nav_identificate_user);
 
 document.getElementById("buttonReset_values").addEventListener('click', resetValues);
 function resetValues() {
