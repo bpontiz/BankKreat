@@ -71,7 +71,6 @@ function userLocalStorage(){
   (validate_user_name && validate_user_profession) ? (value_alreadyUser.innerHTML = `Welcome ${validate_user_profession}, ${validate_user_name}!`) : false;
 }
 
-
 document.getElementById("buttonReset_userKeys").addEventListener('click', deleteUser);
 function deleteUser() {
   // -Descripción: borra los datos de usuario introducidos por él mismo.
@@ -88,27 +87,29 @@ function goToCalculator() {
   let user_signUp = document.getElementById("buttonSend_userData");
   let html_input_Name = document.getElementById("input_Name").value;
   let html_input_Profession = document.getElementById("input_Profession").value;
-  if(!(html_input_Profession == "" || html_input_Name == "")) {
-    user_signUp.addEventListener('click', () => {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'User registered',
-        showConfirmButton: false,
-        timer: 1500,
-        width: 250,
-        showClass: {
-          popup: 'animate__animated animate__fadeIn'
-        },
-        hideClass: {
-          popup: 'animate__animated animate__fadeOut'
+  if(!((html_input_Profession == "" || html_input_Profession.length < 3)
+    || 
+    (html_input_Name == "" || html_input_Name.length < 5))) {
+      user_signUp.addEventListener('click', () => {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'User registered',
+          showConfirmButton: false,
+          timer: 1500,
+          width: 250,
+          showClass: {
+            popup: 'animate__animated animate__fadeIn'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOut'
+          }
+        })
+        setTimeout(openCalculator, 2500);
+        function openCalculator() {
+          window.open("/calculator.html");
         }
       })
-      setTimeout(openCalculator, 2500);
-      function openCalculator() {
-        window.open("/calculator.html");
-      }
-    })
   }
 }
 

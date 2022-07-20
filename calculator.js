@@ -2,6 +2,7 @@
 //?      determinada cantidad de tiempo en meses con
 //?      o sin reinversion parcial.
 
+
 class Users {
   constructor(nombre, profesion) {
     this.nombre = nombre.toUpperCase();
@@ -70,7 +71,7 @@ function interesCompuesto() {
     console.log(`Interest profit after savings period is: ${resultadoCapital} $`);
     let buttonCalculate_values = document.getElementById("buttonCalculate_values");
     buttonCalculate_values.addEventListener('click', () => {
-      DOMCapitalFinal_h3.innerHTML = `<p id="mountCapitalFinal_p">Interest profit after ${eventTiempoDeAhorro} months is: ${result_format_US.format(resultadoCapital)} $</p><p id="mountCapitalFinal_p">Final mount is: ${result_format_US.format(resultadoInteres)} $</p>`;
+      DOMCapitalFinal_h3.innerHTML = `<p id="mountCapitalFinal_p" class="animateEntrance">Interest profit after ${eventTiempoDeAhorro} months is: ${result_format_US.format(resultadoCapital)} $</p><p id="mountCapitalFinal_p" class="animateEntrance">Final mount is: ${result_format_US.format(resultadoInteres)} $</p>`;
       DOMCapitalFinal.append(DOMCapitalFinal_h3);
     })
   }
