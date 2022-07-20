@@ -107,7 +107,7 @@ function goToCalculator() {
         })
         setTimeout(openCalculator, 2500);
         function openCalculator() {
-          window.open("/calculator.html");
+          window.open("../pages/calculator.html");
         }
       })
   }
