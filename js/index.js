@@ -107,7 +107,7 @@ function goToCalculator() {
         })
         setTimeout(openCalculator, 2500);
         function openCalculator() {
-          window.open("../pages/calculator.html");
+          window.open("https://bpontiz.github.io/databaseInteres/pages/calculator.html");
         }
       })
   }
