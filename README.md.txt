@@ -1,0 +1,5 @@
+BANK KREAT
+
+This remote repository was created from Bank Kreat project, an interest calculator with Sign Up functionality and validation modules. Go and simulate your investments!
+
+This project gives you the chance to simulate your investments based on calculating compound interest for a determined period of time. As Albert Einstein said once: “Compound interest is the eighth wonder of the world. He who understands it, earns it; he who doesn't, pays it”. So it is basically an interface you can interact with setting different parameters, such as an initial investment, an annual bank interest, a period of time and a monthly reinvestment mount. Thus, calculator returns the profit that you earn in the specified period of time in months, and the total capital after the whole arithmetic operation.
