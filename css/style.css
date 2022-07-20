@@ -40,7 +40,7 @@ main {
     min-width: 100vw;
     min-height: 85vh;
     position: relative;
-    background-image: url('/multimedia/petronesTowers.jpeg');
+    background-image: url('../multimedia/petronesTowers.jpeg');
     background-size: cover;
     z-index: 50;
 }
@@ -61,7 +61,7 @@ main::before {
     min-width: 100vw;
     max-height: 85vh;
     position: relative;
-    background-image: url('/multimedia/littleBird.jpeg');
+    background-image: url('../multimedia/littleBird.jpeg');
     background-size: cover;
     z-index: 50;
 }
