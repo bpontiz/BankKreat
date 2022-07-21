@@ -9,7 +9,7 @@ class Users {
     this.profesion = profesion.toUpperCase();
   }
   guardarUser() {
-    // Descripción: método que guarda los string inputs por eventos en un array.
+    // Descripción: método que guarda los string inputs en un array.
     let array_newUser = [];
     let eventGetName = document.getElementById("input_Name").value;
     let eventGetProfession = document.getElementById("input_Profession").value;
@@ -77,28 +77,11 @@ function interesCompuesto() {
   }
 }
 
-// Búsqueda del usuario segun las credenciales introducidas 
-// por él mismo. 
-function isInDataBase(testDatabase, askProfession) {
-  /*
-    Descripción: función que imprime un True por consola
-    si la profesión del usuario es Economista.
-  */
-  console.log("------------------"+"\n"+"[Testing] Validación de profesión."+"\n");
-  testDatabase.some(function(CompProfession){
-    // CompProfession se instancia con ServicioInteres. //
-    let economistValidation = askProfession === CompProfession.profesion;
-    console.log(economistValidation);
-  });
-}
-// user1.isInDataBase(databases, 'ECONOMISTA');
-
 // Creación de etiqueta HTML modificando el DOM mediante JS.
 let footer_dev = "Developed by Bruno Pontiz"
 let footer_sign = document.createElement("div")
 footer_sign.innerHTML = `<footer class="container-fluid><div class="row"><h5 class="footerSign">${footer_dev}</h5></div></footer>`;
 document.body.appendChild(footer_sign);
-
 
 function userLocalStorage() {
   // Descripción: función que almacena en local storage la información introducida por el usuario.
@@ -111,9 +94,9 @@ function userLocalStorage() {
   localStorage.setItem("User Info", user1_info_JSON);
 }
 
-let nav_identificate_user = document.getElementById("user_identification");
-let DOM_nav_identificate_user = document.createElement("p");
-DOM_nav_identificate_user_JSON = JSON.parse(localStorage.getItem("User Info")).name;
+var nav_identificate_user = document.getElementById("user_identification");
+var DOM_nav_identificate_user = document.createElement("p");
+var DOM_nav_identificate_user_JSON = JSON.parse(localStorage.getItem("User Info")).name;
 console.log(DOM_nav_identificate_user_JSON);
 DOM_nav_identificate_user.innerHTML = `<i class="bi bi-person"></i><p id="p_identificate_user">${DOM_nav_identificate_user_JSON}</p>`;
 nav_identificate_user.appendChild(DOM_nav_identificate_user);

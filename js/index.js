@@ -8,12 +8,21 @@ class Users {
     this.profesion = profesion.toUpperCase();
   }
   guardarUser() {
-    // -Descripción: método que guarda los string inputs por eventos en un array.
+    // -Descripción: método que guarda los string inputs por eventos en un array
+    // y evalúa si la profesión del usuario es "ECONOMIST".
     let array_newUser = [];
     let eventGetName = document.getElementById("input_Name").value;
     let eventGetProfession = document.getElementById("input_Profession").value;
+    let eventGetProfession_UpperCase = eventGetProfession.toUpperCase();
     array_newUser.push(eventGetName, eventGetProfession);
     console.log(array_newUser);
+    if(eventGetName && eventGetProfession) {
+      array_newUser.some(function() {
+        let askProfession = "ECONOMIST";
+        let economistValidation = askProfession === eventGetProfession_UpperCase;
+        console.log(`------------------\n User's profession is Economist? ${economistValidation}\n------------------`);
+      });
+    }
   }
   mostrarUser() {
     // -Descripción: método que muestra por consola los datos del usuario.
@@ -37,22 +46,6 @@ function validateForm(e) {
   e.preventDefault();
 }
 
-// -Búsqueda del usuario segun las credenciales introducidas 
-// por él mismo. 
-function isInDataBase(testDatabase, askProfession) {
-  /*
-    -Descripción: función que imprime un True por consola
-    si la profesión del usuario es Economista.
-  */
-  console.log("------------------"+"\n"+"[Testing] Validación de profesión."+"\n");
-  testDatabase.some(function(CompProfession){
-    // -CompProfession se instancia con ServicioInteres.
-    let economistValidation = askProfession === CompProfession.profesion;
-    console.log(economistValidation);
-  });
-}
-
-// user1.isInDataBase(databases, 'ECONOMISTA');
 document.getElementById("input_Name").addEventListener('change', userLocalStorage);
 document.getElementById("input_Profession").addEventListener('change', userLocalStorage);
 function userLocalStorage(){
@@ -77,7 +70,12 @@ function deleteUser() {
   document.getElementById("input_Name").value = null;
   document.getElementById("input_Profession").value = null;
   localStorage.clear();
-  document.getElementById("already_user").innerHTML = "";  
+  document.getElementById("already_user").innerHTML = "";
+  location.reload();
+  let refreshCalculatorPage = "";
+  let calculatorPage = "https://bpontiz.github.io/databaseInteres/pages/calculator.html";
+  refreshCalculatorPage.location.href = calculatorPage;
+  return false;
 }
 
 // -Agregando sweetalert cuando se clickea boton de Sign Up.
