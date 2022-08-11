@@ -4,20 +4,20 @@
 
 
 class Users {
-  constructor(nombre, profesion) {
-    this.nombre = nombre.toUpperCase();
-    this.profesion = profesion.toUpperCase();
+  constructor(name, profession) {
+    this.name = name.toUpperCase();
+    this.profession = profession.toUpperCase();
   }
-  guardarUser() {
+  saveUser() {
     // Descripción: método que guarda los string inputs en un array.
     let array_newUser = [];
     let eventGetName = document.getElementById("input_Name").value;
     let eventGetProfession = document.getElementById("input_Profession").value;
     array_newUser.push(eventGetName, eventGetProfession);
   }
-  mostrarUser() {
+  showUser() {
     // Descripción: método que muestra por consola los datos del usuario.
-    console.log(`Las credenciales del usuario son: ${this.profesion} ${this.nombre}`);
+    console.log(`Las credenciales del usuario son: ${this.profession} ${this.name}`);
   }
 }
 
@@ -26,52 +26,52 @@ function sendUser() {
   let eventGetName = document.getElementById("input_Name").value;
   let eventGetProfession = document.getElementById("input_Profession").value;
   const user1 = new Users(eventGetName, eventGetProfession);
-  eventGetName && eventGetProfession ? (user1.guardarUser() && user1.mostrarUser()) : false;
+  eventGetName && eventGetProfession ? (user1.saveUser() && user1.showUser()) : false;
 }
 
 // AddEventListener de actividad del usuario.
-document.getElementById("input_CI").addEventListener('change', interesCompuesto);
-document.getElementById("input_Interes").addEventListener('change', interesCompuesto);
-document.getElementById("input_Plazo").addEventListener('change', interesCompuesto);
-document.getElementById("input_CR").addEventListener('change', interesCompuesto);
+document.getElementById("input_CI").addEventListener('change', compoundInterest);
+document.getElementById("input_Interes").addEventListener('change', compoundInterest);
+document.getElementById("input_Plazo").addEventListener('change', compoundInterest);
+document.getElementById("input_CR").addEventListener('change', compoundInterest);
 
 let DOMCapitalFinal = document.getElementById("DOMCapitalFinal_div");
 let DOMCapitalFinal_h3 = document.createElement("h3");
-function interesCompuesto() {
+function compoundInterest() {
   /*
    Descripción: función que calcula el interés compuesto a partir
    de capital inicial con reinversión mensual.
   */
   let result_format_US = new Intl.NumberFormat('en-US');
-  let eventCapitalInicial = parseInt(document.getElementById("input_CI").value);
-  let eventTasaDeInteres = parseInt(document.getElementById("input_Interes").value);
-  let eventTiempoDeAhorro = parseInt(document.getElementById("input_Plazo").value);
-  let eventCapitalReinversion = parseInt(document.getElementById("input_CR").value);
-  if( eventCapitalInicial && eventTasaDeInteres && eventTiempoDeAhorro && eventCapitalReinversion ){
-    let capitalFinal = 0;
-    let resultadoInteres;
-    console.log(`Initial investment: ${eventCapitalInicial} $`);
-    console.log(`Annual bank interest: ${eventTasaDeInteres} %`);
-    console.log(`Period: ${eventTiempoDeAhorro} Months`);
-    console.log(`Monthly reinvestment: ${eventCapitalReinversion} $`);
-    for( let i = 1; i <= eventTiempoDeAhorro; i++ ){
+  let eventInitialInvestment = parseInt(document.getElementById("input_CI").value);
+  let eventInterestRate = parseInt(document.getElementById("input_Interes").value);
+  let eventSavingPeriod = parseInt(document.getElementById("input_Plazo").value);
+  let eventMonthlyReinvestment = parseInt(document.getElementById("input_CR").value);
+  if( eventInitialInvestment && eventInterestRate && eventSavingPeriod && eventMonthlyReinvestment ){
+    let finalCapital = 0;
+    let interestResult;
+    console.log(`Initial investment: ${eventInitialInvestment} $`);
+    console.log(`Annual bank interest: ${eventInterestRate} %`);
+    console.log(`Period: ${eventSavingPeriod} Months`);
+    console.log(`Monthly reinvestment: ${eventMonthlyReinvestment} $`);
+    for( let i = 1; i <= eventSavingPeriod; i++ ){
       //! Formula de interes compuesto
       i == 1 ? (
-        capitalFinal = (eventCapitalInicial) * (1+((eventTasaDeInteres/100)/12))**i,
-        resultadoInteres = capitalFinal.toFixed(2),
-        console.log(`»Total mount at month number ${i} is ${result_format_US.format(resultadoInteres)} $`)
+        finalCapital = (eventInitialInvestment) * (1+((eventInterestRate/100)/12))**i,
+        interestResult = finalCapital.toFixed(2),
+        console.log(`»Total mount at month number ${i} is ${result_format_US.format(interestResult)} $`)
       ) : (
-        capitalFinal = (eventCapitalInicial + eventCapitalReinversion*(i-1))*(1+((eventTasaDeInteres/100)/12))**i,
-        resultadoInteres = capitalFinal.toFixed(2),
-        console.log(`»Total mount at month number ${i} is ${result_format_US.format(resultadoInteres)} $`)
+        finalCapital = (eventInitialInvestment + eventMonthlyReinvestment*(i-1))*(1+((eventInterestRate/100)/12))**i,
+        interestResult = finalCapital.toFixed(2),
+        console.log(`»Total mount at month number ${i} is ${result_format_US.format(interestResult)} $`)
       );
     }
-    let diferenciaCapital = capitalFinal - (eventCapitalInicial + ( eventCapitalReinversion * ( eventTiempoDeAhorro - 1 )));
-    let resultadoCapital = diferenciaCapital.toFixed(2);
-    console.log(`Interest profit after savings period is: ${resultadoCapital} $`);
+    let capitalDifference = finalCapital - (eventInitialInvestment + ( eventMonthlyReinvestment * ( eventSavingPeriod - 1 )));
+    let capitalResult = capitalDifference.toFixed(2);
+    console.log(`Interest profit after savings period is: ${capitalResult} $`);
     let buttonCalculate_values = document.getElementById("buttonCalculate_values");
     buttonCalculate_values.addEventListener('click', () => {
-      DOMCapitalFinal_h3.innerHTML = `<p id="mountCapitalFinal_p" class="animateEntrance">Interest profit after ${eventTiempoDeAhorro} months is: ${result_format_US.format(resultadoCapital)} $</p><p id="mountCapitalFinal_p" class="animateEntrance">Final mount is: ${result_format_US.format(resultadoInteres)} $</p>`;
+      DOMCapitalFinal_h3.innerHTML = `<p id="mountCapitalFinal_p" class="animateEntrance">Interest profit after ${eventSavingPeriod} months is: ${result_format_US.format(capitalResult)} $</p><p id="mountCapitalFinal_p" class="animateEntrance">Final mount is: ${result_format_US.format(interestResult)} $</p>`;
       DOMCapitalFinal.append(DOMCapitalFinal_h3);
     })
   }
@@ -98,8 +98,9 @@ var nav_identificate_user = document.getElementById("user_identification");
 var DOM_nav_identificate_user = document.createElement("p");
 var DOM_nav_identificate_user_JSON = JSON.parse(localStorage.getItem("User Info")).name;
 console.log(DOM_nav_identificate_user_JSON);
-DOM_nav_identificate_user.innerHTML = `<i class="bi bi-person"></i><p id="p_identificate_user">${DOM_nav_identificate_user_JSON}</p>`;
+DOM_nav_identificate_user.innerHTML = `<i class="bi bi-person"></i><p id="p_identificate_user dropdown">${DOM_nav_identificate_user_JSON}</p>`;
 nav_identificate_user.appendChild(DOM_nav_identificate_user);
+
 
 document.getElementById("buttonReset_values").addEventListener('click', resetValues);
 function resetValues() {

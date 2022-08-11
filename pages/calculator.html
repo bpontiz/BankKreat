@@ -29,12 +29,19 @@
                     <li class="nav-item">
                         <a class="nav-link" href="calculator.html">Interest calculator</a>
                     </li>
-                    <li class="nav-item position-absolute top-0 end-0">
-                        <a href="#" id="user_identification" class="nav-link li_nav_id_user">
+                    <li class="nav-item position-absolute top-0 end-0 li_user_dropdown">
+                        <a href="#" id="user_identification" class="nav-link li_nav_id_user text-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="23" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 23 14">
                                 <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                             </svg>
                         </a>
+                        <div class="dropdown user_dropdown text-center">
+                            <button class="btn btn-link bg-transparent dropdown-toggle text-center dropdown_icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right dropdownExit" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item signOutText" href="../index.html">Sign out</a>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -73,4 +80,6 @@
         </div>
     </main>
     <script src="../js/calculator.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </html>

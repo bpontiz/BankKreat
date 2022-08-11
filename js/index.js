@@ -3,11 +3,11 @@
 //?      o sin reinversion parcial.
 
 class Users {
-  constructor(nombre, profesion) {
-    this.nombre = nombre.toUpperCase();
-    this.profesion = profesion.toUpperCase();
+  constructor(name, profession) {
+    this.name = name.toUpperCase();
+    this.profession = profession.toUpperCase();
   }
-  guardarUser() {
+  saveUser() {
     // -Descripción: método que guarda los string inputs por eventos en un array
     // y evalúa si la profesión del usuario es "ECONOMIST".
     let array_newUser = [];
@@ -24,9 +24,9 @@ class Users {
       });
     }
   }
-  mostrarUser() {
+  showUser() {
     // -Descripción: método que muestra por consola los datos del usuario.
-    console.log(`Las credenciales del usuario son: ${this.profesion} ${this.nombre}`);
+    console.log(`Las credenciales del usuario son: ${this.profession} ${this.name}`);
   }
 }
 
@@ -37,7 +37,7 @@ function sendUser() {
   let eventGetName = document.getElementById("input_Name").value;
   let eventGetProfession = document.getElementById("input_Profession").value;
   const user1 = new Users(eventGetName, eventGetProfession);
-  eventGetName && eventGetProfession ? (user1.guardarUser() && user1.mostrarUser()) : false;
+  eventGetName && eventGetProfession ? (user1.saveUser() && user1.showUser()) : false;
 }
 
 let loginForm = document.getElementById("validate_form");
@@ -73,7 +73,7 @@ function deleteUser() {
   document.getElementById("already_user").innerHTML = "";
   location.reload();
   let refreshCalculatorPage = "";
-  let calculatorPage = "https://bpontiz.github.io/databaseInteres/pages/calculator.html";
+  let calculatorPage = "https://bpontiz.github.io/BankKreat/pages/calculator.html";
   refreshCalculatorPage.location.href = calculatorPage;
   return false;
 }
@@ -105,7 +105,8 @@ function goToCalculator() {
         })
         setTimeout(openCalculator, 2500);
         function openCalculator() {
-          window.open("https://bpontiz.github.io/databaseInteres/pages/calculator.html");
+          window.open("../pages/calculator.html");
+          // https://bpontiz.github.io/databaseInteres/pages/calculator.html
         }
       })
   }

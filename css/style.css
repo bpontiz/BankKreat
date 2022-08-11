@@ -28,6 +28,33 @@ header .titleBankKreat {
     display: inline;
 }
 
+.bi-caret-down-fill {
+    margin-left: 2px;
+}
+
+.li_user_dropdown {
+    display: flex;
+    flex-direction: row;
+}
+
+.dropdown_icon {
+    text-align: left;
+    display: inline-block;
+    margin-top: 0.9rem;
+    color: #FFFFFF;
+    position: relative;
+    right: 15px;
+}
+
+.signOutText {
+    font-size: small;
+}
+
+.dropdownExit {
+    left: auto;
+    right: 0%;
+}
+
 #p_identificate_user {
     display: flex;
     flex-direction: row;
