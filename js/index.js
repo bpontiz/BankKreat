@@ -105,8 +105,7 @@ function goToCalculator() {
         })
         setTimeout(openCalculator, 2500);
         function openCalculator() {
-          window.open("../pages/calculator.html");
-          // https://bpontiz.github.io/databaseInteres/pages/calculator.html
+          window.open("https://bpontiz.github.io/BankKreat/pages/calculator.html");
         }
       })
   }
