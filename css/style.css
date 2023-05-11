@@ -219,7 +219,7 @@ main .div_buttons {
 
 main .button_values, .button_userKeys {
     min-width: 10%;
-    max-width: 10%;
+    max-width: 15%;
     font-size: 0.7rem;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
@@ -299,4 +299,43 @@ footer .footerSign {
     text-align: center;
     font-size: 90%;
     color: #AAAAAA;
+}
+
+@media (max-width: 768px) {
+    header .titleBankKreat {
+        font-size: 1rem;
+    }
+
+    main .userText, .finalCapitalText {
+        font-size: 80%;
+        font-weight: normal;
+        padding: 1%;
+        color: #FFFFFF;
+    }
+
+    main .userData {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2%;
+        margin-left: 0.5%;
+    }
+
+    main .inputUser {
+        border: none;
+        border-bottom: 2px #FFFFFF ridge;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.6rem;
+        padding: 1%;
+        outline: none;
+        resize: none;
+        background-color: transparent;
+        color: #FFFFFF;
+        max-width: 150px;
+    }
+
+    .button_userKeys {
+        font-size: 12px;
+        max-width: 125px;
+    }
 }
