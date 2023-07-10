@@ -218,8 +218,7 @@ main .div_buttons {
 }
 
 main .button_values, .button_userKeys {
-    min-width: 10%;
-    max-width: 15%;
+    width: 30px;
     font-size: 0.7rem;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
@@ -229,6 +228,14 @@ main .button_values, .button_userKeys {
     border-radius: 10px;
     background-color: transparent;
     color: #FFFFFF;
+}
+
+main .button_userKeys {
+    width: 125px;
+}
+
+main .button_values {
+    width: 120px;
 }
 
 main .button_userKeys:focus {
@@ -244,13 +251,8 @@ main .button_userKeys:visited {
     color: #FFFFFF;
 }
 
-main .button_values {
-    max-width: 7%;
-}
-
 main .button_dollarSymbol {
-    min-width: 3%;
-    max-width: 3%;
+    width: 60px;
     font-size: 1.1rem;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;

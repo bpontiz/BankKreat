@@ -39,15 +39,15 @@ let DOMCapitalFinal = document.getElementById("DOMCapitalFinal_div");
 let DOMCapitalFinal_h3 = document.createElement("h3");
 function compoundInterest() {
   /*
-   Descripción: función que calcula el interés compuesto a partir
-   de capital inicial con reinversión mensual.
+    Descripción: función que calcula el interés compuesto a partir
+    de capital inicial con reinversión mensual.
   */
   let result_format_US = new Intl.NumberFormat('en-US');
   let eventInitialInvestment = parseInt(document.getElementById("input_CI").value);
   let eventInterestRate = parseInt(document.getElementById("input_Interes").value);
   let eventSavingPeriod = parseInt(document.getElementById("input_Plazo").value);
   let eventMonthlyReinvestment = parseInt(document.getElementById("input_CR").value);
-  if( eventInitialInvestment && eventInterestRate && eventSavingPeriod && eventMonthlyReinvestment ){
+  if( (eventInitialInvestment && eventInterestRate && eventSavingPeriod) && (eventMonthlyReinvestment || eventMonthlyReinvestment === 0) ){
     let finalCapital = 0;
     let interestResult;
     console.log(`Initial investment: ${eventInitialInvestment} $`);
